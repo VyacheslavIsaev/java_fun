@@ -1,7 +1,7 @@
-package com.fun7.user.rest.bl.impl;
+package com.fun7.rest.user.bl.impl;
 
-import com.fun7.user.rest.bl.UserService;
-import com.fun7.user.rest.models.UserFeaturesResponseModel;
+import com.fun7.rest.user.bl.UserService;
+import com.fun7.rest.user.models.UserFeaturesResponseModel;
 import org.springframework.stereotype.Service;
 
 @Service

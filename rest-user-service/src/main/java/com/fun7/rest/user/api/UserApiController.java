@@ -1,7 +1,7 @@
-package com.fun7.user.rest.api;
+package com.fun7.rest.user.api;
 
-import com.fun7.user.rest.bl.UserService;
-import com.fun7.user.rest.models.UserFeaturesResponseModel;
+import com.fun7.rest.user.bl.UserService;
+import com.fun7.rest.user.models.UserFeaturesResponseModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -35,11 +35,9 @@ public class UserApiController {
                         schema = @Schema(implementation = UserFeaturesResponseModel.class)
                 )
                 }
-        ),
-            @ApiResponse(responseCode = "400", description="Not found."),
-            @ApiResponse(responseCode = "500", description="Internal server error.")
+        ), @ApiResponse(responseCode = "500", description="Internal server error.")
     })
-    @GetMapping("")
+    @GetMapping(value="", produces = "application/vnd.api.v1+json" )
     public @ResponseBody
     ResponseEntity<UserFeaturesResponseModel> getFeatures(@RequestParam @NotEmpty String timezone,
                                                           @RequestParam @NotEmpty String userId,

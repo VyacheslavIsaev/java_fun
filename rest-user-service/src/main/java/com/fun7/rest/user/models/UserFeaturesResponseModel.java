@@ -1,4 +1,4 @@
-package com.fun7.user.rest.models;
+package com.fun7.rest.user.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
