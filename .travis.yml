@@ -1,0 +1,26 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    - GIT_SHA = $(git rev-parse HEAD)
+    - MVN_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+    - COMMIT=${TRAVIS_COMMIT::7}
+
+before_install:
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+
+script:
+  - ./mvnw clean install -B
+
+deploy:
+  provider: script
+  script: bash ./gc_deploy.sh
+  on:
+    branch: master

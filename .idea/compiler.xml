@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ads" />
+        <module name="user-rest-api-service" />
+        <module name="customer-support" />
+        <module name="admin-rest-api-service" />
+        <module name="feature" />
+        <module name="common" />
+        <module name="user-rest-api" />
+        <module name="multiplayer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin-rest-api" target="14" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin-rest-api-service" options="-parameters" />
+      <module name="ads" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="customer-support" options="-parameters" />
+      <module name="feature" options="-parameters" />
+      <module name="multiplayer" options="-parameters" />
+      <module name="user-rest-api" options="-parameters" />
+      <module name="user-rest-api-service" options="-parameters" />
+    </option>
+  </component>
+</project>
