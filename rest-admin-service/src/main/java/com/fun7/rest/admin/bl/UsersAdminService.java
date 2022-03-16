@@ -1,6 +1,6 @@
-package com.fun7.admin.bl;
+package com.fun7.rest.admin.bl;
 
-import com.fun7.admin.models.UserResponseModel;
+import com.fun7.rest.admin.models.UserResponseModel;
 
 import java.util.List;
 

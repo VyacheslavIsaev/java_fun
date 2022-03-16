@@ -2,6 +2,11 @@ package com.fun7.user.rest.api;
 
 import com.fun7.user.rest.bl.UserService;
 import com.fun7.user.rest.models.UserFeaturesResponseModel;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +26,19 @@ public class UserApiController {
         this.userService = userService;
     }
 
+    @Operation(summary = "Get user features.")
+    @ApiResponses(value={
+        @ApiResponse( responseCode = "200", description="Successful response.",
+                content={
+                @Content(
+                        mediaType = "application/vnd.api.v1+json",
+                        schema = @Schema(implementation = UserFeaturesResponseModel.class)
+                )
+                }
+        ),
+            @ApiResponse(responseCode = "400", description="Not found."),
+            @ApiResponse(responseCode = "500", description="Internal server error.")
+    })
     @GetMapping("")
     public @ResponseBody
     ResponseEntity<UserFeaturesResponseModel> getFeatures(@RequestParam @NotEmpty String timezone,

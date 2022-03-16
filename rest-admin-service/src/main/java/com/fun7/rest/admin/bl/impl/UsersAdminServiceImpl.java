@@ -1,7 +1,7 @@
-package com.fun7.admin.bl.impl;
+package com.fun7.rest.admin.bl.impl;
 
-import com.fun7.admin.bl.UsersAdminService;
-import com.fun7.admin.models.UserResponseModel;
+import com.fun7.rest.admin.bl.UsersAdminService;
+import com.fun7.rest.admin.models.UserResponseModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
