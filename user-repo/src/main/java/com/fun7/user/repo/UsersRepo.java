@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 
 @Component
-public class UsersRepo {
+public class UsersRepo implements UsersAdminService, UserService{
 
     private HashMap<String, UserModel> userExperience = new HashMap<String, UserModel>();
 
-    public int getCallsNumber(String userId){
+    public Integer getVisitsNumber(String userId){
         UserModel model = userExperience.get(userId);
         if (model == null){
             model = new UserModel(userId, 1);
@@ -25,7 +25,7 @@ public class UsersRepo {
         return model.getVisits();
     }
 
-    public List<UserModel> listAllUsers(){
+    public List<UserModel> getAllUsers(){
         return new ArrayList<>( userExperience.values() );
     }
 

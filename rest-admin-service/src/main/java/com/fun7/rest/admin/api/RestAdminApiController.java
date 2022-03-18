@@ -1,9 +1,9 @@
 package com.fun7.rest.admin.api;
 
-
-import com.fun7.rest.admin.bl.UsersAdminService;
-import com.fun7.rest.admin.models.UserResponseModel;
+import com.fun7.user.repo.UsersAdminService;
+import com.fun7.user.repo.models.UserModel;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,7 +33,7 @@ public class AdminApiController {
                     content={
                             @Content(
                                     mediaType = "application/vnd.api.v1+json",
-                                    schema = @Schema(implementation = UserResponseModel.class)
+                                    array = @ArraySchema(schema = @Schema(implementation = UserModel.class))
                             )
                     }
             ),
@@ -42,8 +42,8 @@ public class AdminApiController {
     })
     @GetMapping(value="/users", produces = "application/vnd.api.v1+json")
     public @ResponseBody
-    ResponseEntity<List<UserResponseModel>> getAllUsers(){
-        List<UserResponseModel> response = usersAdminService.getAllUsers();
+    ResponseEntity<List<UserModel>> getAllUsers(){
+        List<UserModel> response = usersAdminService.getAllUsers();
         return ResponseEntity.ok(response);
     }
 
@@ -53,7 +53,7 @@ public class AdminApiController {
                     content={
                             @Content(
                                     mediaType = "application/vnd.api.v1+json",
-                                    schema = @Schema(implementation = UserResponseModel.class)
+                                    schema = @Schema(implementation = UserModel.class)
                             )
                     }
             ),
@@ -62,9 +62,9 @@ public class AdminApiController {
     })
     @GetMapping(value="/users/{id}", produces = "application/vnd.api.v1+json")
     public @ResponseBody
-    ResponseEntity<UserResponseModel> getUser(@PathVariable @NotEmpty String id){
+    ResponseEntity<UserModel> getUser(@PathVariable @NotEmpty String id){
         LOG.info("getUser with id {}", id);
-        UserResponseModel response = usersAdminService.getUser(id);
+        UserModel response = usersAdminService.getUser(id);
         return ResponseEntity.ok(response);
     }
 
@@ -74,7 +74,7 @@ public class AdminApiController {
                     content={
                             @Content(
                                     mediaType = "application/vnd.api.v1+json",
-                                    schema = @Schema(implementation = UserResponseModel.class)
+                                    schema = @Schema(implementation = UserModel.class)
                             )
                     }
             ),
@@ -84,7 +84,7 @@ public class AdminApiController {
     @DeleteMapping(value="/users/{id}", produces = "application/vnd.api.v1+json")
     public @ResponseStatus
     ResponseEntity<String> deleteUser(@PathVariable @NotEmpty String id){
-        boolean res = usersAdminService.deleteUser(id);
+        usersAdminService.deleteUser(id);
         return ResponseEntity.ok("");
     }
 
