@@ -17,6 +17,7 @@
         <module>feature-multiplayer</module>
         <module>rest-admin-service</module>
         <module>rest-user-service</module>
+        <module>user-repo</module>
     </modules>
 
     <parent>
@@ -104,6 +105,12 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 

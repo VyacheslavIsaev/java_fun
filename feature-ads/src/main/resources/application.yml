@@ -1,5 +1,11 @@
+feature-ads-service:
+  request_url: /fun7-ad-partner?countryCode={cc}
+  user_name: fun7user
+  user_pass: fun7pass
+  enabled_str: "sure, why not!"
+
 resilience4j:
   circuitbreaker:
     instances:
-      externalServiceFoo:
+      externalApiCB:
         slidingWindowType: COUNT_BASED

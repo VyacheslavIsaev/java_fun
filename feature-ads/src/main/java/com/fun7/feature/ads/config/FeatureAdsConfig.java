@@ -1,6 +1,8 @@
 package com.fun7.feature.ads.config;
 
 import io.github.resilience4j.common.circuitbreaker.configuration.CircuitBreakerConfigCustomizer;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +15,17 @@ import static io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.Sliding
 @Configuration
 public class FeatureAdsConfig {
 
+    FeatureAdsConfigData configData;
+
+    public FeatureAdsConfig(FeatureAdsConfigData configData) {
+        this.configData = configData;
+    }
+
     @Bean
     public RestTemplate restTemplate() {
-        return new RestTemplateBuilder().rootUri("http://localhost:9090").build();
+        return new RestTemplateBuilder().rootUri(configData.getRootUri()).build();
     }
+
     @Bean
     public CircuitBreakerConfigCustomizer externalServiceFooCircuitBreakerConfig() {
         return CircuitBreakerConfigCustomizer
