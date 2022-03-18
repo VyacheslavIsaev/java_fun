@@ -28,14 +28,16 @@
 
     <properties>
         <java.version>11</java.version>
+        <joda-time.version>2.10.13</joda-time.version>
         <lombok.version>1.18.20</lombok.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <resilience4j.version>1.7.1</resilience4j.version>
         <spring.version>5.3.7</spring.version>
         <spring-boot.version>2.5.10</spring-boot.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <joda-time.version>2.10.13</joda-time.version>
         <springdoc-openapi-ui.version>1.5.12</springdoc-openapi-ui.version>
+        <wiremock.version>2.27.2</wiremock.version>
     </properties>
 
     <dependencyManagement>
@@ -61,6 +63,20 @@
             </dependency>
 
             <dependency>
+                <groupId>io.github.resilience4j</groupId>
+                <artifactId>resilience4j-spring-boot2</artifactId>
+                <version>${resilience4j.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock</artifactId>
+                <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
@@ -74,8 +90,20 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 
