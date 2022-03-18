@@ -2,11 +2,13 @@ package com.fun7.user.repo;
 
 
 import com.fun7.user.repo.models.UserModel;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@Component
 public class UsersRepo {
 
     private HashMap<String, UserModel> userExperience = new HashMap<String, UserModel>();
