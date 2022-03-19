@@ -56,6 +56,30 @@
                 <version>${version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.fun7</groupId>
+                <artifactId>feature-ads</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fun7</groupId>
+                <artifactId>feature-customer-support</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fun7</groupId>
+                <artifactId>feature-multiplayer</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fun7</groupId>
+                <artifactId>user-repo</artifactId>
+                <version>${version}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
             <dependency>
                 <groupId>joda-time</groupId>
