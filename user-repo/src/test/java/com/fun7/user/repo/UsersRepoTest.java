@@ -1,11 +1,14 @@
 package com.fun7.user.repo;
 
+import com.fun7.user.repo.error.InvalidUserIdException;
+import com.fun7.user.repo.error.UserNotFoundException;
 import com.fun7.user.repo.models.UserModel;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UsersRepoTest {
 
@@ -59,4 +62,25 @@ public class UsersRepoTest {
         UserModel user = list.get(0);
         assertEquals(user2, user.getUserId());
     }
+
+    @Test
+    void throws_user_not_found_exception(){
+        String user1 = "user0";
+        List<UserModel> list = usersRepo.getAllUsers();
+        assertEquals(0, list.size());
+
+        UserNotFoundException exception = assertThrows(
+                UserNotFoundException.class,
+                () -> { usersRepo.deleteUser(user1); }
+        );
+    }
+
+    @Test
+    void throws_invalid_user_id_exception(){
+        InvalidUserIdException exception = assertThrows(
+                InvalidUserIdException.class,
+                () -> { usersRepo.deleteUser(null); }
+        );
+    }
+
 }
