@@ -8,18 +8,18 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 public class AdsFeatureConfigData {
-    @Value("${feature-ads-service.root-uri}")
+    @Value("${ads-feature.root-uri}")
     private String rootUri;
 
-    @Value("${feature-ads-service.request-url}")
+    @Value("${ads-feature.request-url}")
     private String requestUrl;
 
-    @Value("${feature-ads-service.user-name}")
+    @Value("${ads-feature.user-name}")
     private String userName;
 
-    @Value("${feature-ads-service.user-pass}")
+    @Value("${ads-feature.user-pass}")
     private String userPass;
 
-    @Value("${feature-ads-service.enabled-str}")
+    @Value("${ads-feature.enabled-str}")
     private String enabledStr;
 }

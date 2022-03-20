@@ -5,12 +5,13 @@ import com.fun7.user.repo.error.InvalidUserIdException;
 import com.fun7.user.repo.error.UserNotFoundException;
 import com.fun7.user.repo.models.UserDataModel;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Component
+@Repository
 public class UsersRepo implements UsersAdminService, UserService{
 
     private HashMap<String, UserDataModel> userExperience = new HashMap<String, UserDataModel>();

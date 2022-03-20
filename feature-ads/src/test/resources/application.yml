@@ -1,5 +1,5 @@
 
-feature-ads-service:
+ads-feature:
   root-uri: http://localhost:9090
   request-url: /fun7-ad-partner?countryCode={cc}
   user-name: fun7user
