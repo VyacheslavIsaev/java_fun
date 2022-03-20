@@ -6,13 +6,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FeatureCustomerSupportTest {
+public class CustomerSupportFeatureTest {
 
-    FeatureCustomerSupport customerSupport = new FeatureCustomerSupport();
+    CustomerSupportFeature customerSupport = new CustomerSupportFeature();
 
     Date getTimeFromStr(String strTime) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("hh:mm");
@@ -52,7 +51,7 @@ public class FeatureCustomerSupportTest {
 
     @Test
     void true_if_holiday(){
-        FeatureCustomerSupport.FIXED_HOLIDAYS.stream().forEach(
+        CustomerSupportFeature.FIXED_HOLIDAYS.stream().forEach(
                 e -> {
                     assertDateIsFixedHoliday(e);
                 }

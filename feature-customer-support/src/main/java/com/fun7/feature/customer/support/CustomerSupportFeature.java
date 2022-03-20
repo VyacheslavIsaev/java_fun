@@ -7,7 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class FeatureCustomerSupport extends FeatureUtils {
+public class CustomerSupportFeature extends FeatureUtils {
 
     public static final String SUPPORT_ZONE = "Europe/Ljubljana";
     public static final String SUPPORT_OPEN_TIME  = "09:00";
