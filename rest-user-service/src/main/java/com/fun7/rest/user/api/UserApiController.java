@@ -12,13 +12,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @RestController
 @RequestMapping(value = "/api")
 public class UserApiController {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserApiController.class);
+    private static final String VALIDATOR_ISER_ID = "[\\w\\d]*";
+    private static final String VALIDATOR_TIMEZONE = "[\\w\\d+]*";
+    private static final String MEDIATYPE_V1 = "application/vnd.api.v1+json";
 
     private UserService userService;
 
@@ -31,17 +36,18 @@ public class UserApiController {
         @ApiResponse( responseCode = "200", description="Successful response.",
                 content={
                 @Content(
-                        mediaType = "application/vnd.api.v1+json",
+                        mediaType = MEDIATYPE_V1,
                         schema = @Schema(implementation = UserFeaturesResponseModel.class)
                 )
                 }
         ), @ApiResponse(responseCode = "500", description="Internal server error.")
     })
-    @GetMapping(value="", produces = "application/vnd.api.v1+json" )
+
+    @GetMapping(value="", produces = MEDIATYPE_V1 )
     public @ResponseBody
-    ResponseEntity<UserFeaturesResponseModel> getFeatures(@RequestParam @NotEmpty String timezone,
-                                                          @RequestParam @NotEmpty String userId,
-                                                          @RequestParam @NotEmpty String cc ){
+    ResponseEntity<UserFeaturesResponseModel> getFeatures(@RequestParam @Pattern(regexp = VALIDATOR_TIMEZONE) String timezone,
+                                                          @RequestParam @Pattern(regexp = VALIDATOR_ISER_ID) String userId,
+                                                          @RequestParam @Pattern(regexp = VALIDATOR_ISER_ID) String cc ){
         UserFeaturesResponseModel response = userService.getFeatures(userId, cc, timezone);
         return ResponseEntity.ok(response);
     }
