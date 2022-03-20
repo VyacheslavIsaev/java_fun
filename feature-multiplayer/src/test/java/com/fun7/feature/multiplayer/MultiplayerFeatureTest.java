@@ -1,19 +1,19 @@
 package com.fun7.feature.multiplayer;
 
+import com.fun7.user.repo.UsersRepo;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest(classes = {com.fun7.user.repo.UsersRepo.class})
 public class MultiplayerFeatureTest {
 
-    private final MultiplayerFeatureSpy multiplayerFeature = new MultiplayerFeatureSpy();
+    @Autowired
+    private UsersRepo usersRepo;
 
-    @Test
-    void calls_number_increase_for_user(){
-        String user = "user0";
-        assertEquals(1, multiplayerFeature.getCallsNumberPub(user));
-        assertEquals(2, multiplayerFeature.getCallsNumberPub(user));
-    }
+    private final MultiplayerFeatureSpy multiplayerFeature = new MultiplayerFeatureSpy(usersRepo);
 
     @Test
     void false_when_user_is_not_experienced(){
