@@ -100,6 +100,7 @@ public class FeatureAdsServiceTest {
     public void mock_server_returns_400_response() throws Exception {
         Exception exception = assertThrows(HttpClientErrorException.class, () -> {
             ResponseEntity<String> response = restTemplate.getForEntity(URL, String.class);
+            assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
         });
     }
 
@@ -107,6 +108,7 @@ public class FeatureAdsServiceTest {
     public void mock_server_returns_401_response() throws Exception {
         Exception exception = assertThrows(HttpClientErrorException.class, () -> {
             ResponseEntity<String> response = restTemplate.getForEntity(REQUEST_URL, String.class,"us");
+            assertEquals(response.getStatusCode(), HttpStatus.UNAUTHORIZED);
         });
     }
 

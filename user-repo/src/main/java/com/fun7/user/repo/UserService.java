@@ -1,5 +1,5 @@
 package com.fun7.user.repo;
 
-interface UserService {
+public interface UserService {
     Integer getVisitsNumber(String userId);
 }

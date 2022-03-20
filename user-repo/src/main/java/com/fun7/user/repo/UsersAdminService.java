@@ -1,13 +1,13 @@
 package com.fun7.user.repo;
 
-import com.fun7.user.repo.models.UserModel;
+import com.fun7.user.repo.models.UserDataModel;
 
 import java.util.List;
 
 public interface UsersAdminService {
-    List<UserModel> getAllUsers();
+    List<UserDataModel> getAllUsers();
 
-    UserModel getUser(String id);
+    UserDataModel getUser(String id);
 
     void deleteUser(String id);
 }

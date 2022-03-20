@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserModel {
+public class UserDataModel {
     String userId;
     Integer visits;
 
