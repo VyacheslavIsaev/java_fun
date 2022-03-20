@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UsersRepoTest {
 
-    UsersRepo usersRepo = new UsersRepo();
+    Repo usersRepo = new Repo();
 
     @Test
     void user_appears_after_first_call(){

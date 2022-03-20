@@ -4,7 +4,7 @@ import com.fun7.user.repo.models.UserDataModel;
 
 import java.util.List;
 
-public interface UsersAdminService {
+public interface AdminUserInterface {
     List<UserDataModel> getAllUsers();
 
     UserDataModel getUser(String id);
