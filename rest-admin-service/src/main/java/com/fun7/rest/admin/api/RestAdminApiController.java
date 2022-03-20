@@ -1,7 +1,8 @@
 package com.fun7.rest.admin.api;
 
+import com.fun7.rest.admin.models.UserIdResponseModel;
 import com.fun7.user.repo.UsersAdminService;
-import com.fun7.user.repo.models.UserModel;
+import com.fun7.user.repo.models.UserDataModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,16 +15,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api")
-public class AdminApiController {
-    private static final Logger LOG = LoggerFactory.getLogger(AdminApiController.class);
+public class RestAdminApiController {
+    private static final Logger LOG = LoggerFactory.getLogger(RestAdminApiController.class);
+    private static final String MEDIATYPE_V1 = "application/vnd.api.v1+json";
+    private static final String VALIDATOR_ISER_ID = "[\\w\\d]*";
 
     private UsersAdminService usersAdminService;
 
-    public AdminApiController(UsersAdminService usersAdminService) {
+    public RestAdminApiController(UsersAdminService usersAdminService) {
         this.usersAdminService = usersAdminService;
     }
 
@@ -32,18 +36,18 @@ public class AdminApiController {
             @ApiResponse( responseCode = "200", description="Successful response.",
                     content={
                             @Content(
-                                    mediaType = "application/vnd.api.v1+json",
-                                    array = @ArraySchema(schema = @Schema(implementation = UserModel.class))
+                                    mediaType = MEDIATYPE_V1,
+                                    array = @ArraySchema(schema = @Schema(implementation = UserDataModel.class))
                             )
                     }
             ),
             @ApiResponse(responseCode = "400", description="Not found."),
             @ApiResponse(responseCode = "500", description="Internal server error.")
     })
-    @GetMapping(value="/users", produces = "application/vnd.api.v1+json")
+    @GetMapping(value="/users", produces = MEDIATYPE_V1)
     public @ResponseBody
-    ResponseEntity<List<UserModel>> getAllUsers(){
-        List<UserModel> response = usersAdminService.getAllUsers();
+    ResponseEntity<List<UserDataModel>> getAllUsers(){
+        List<UserDataModel> response = usersAdminService.getAllUsers();
         return ResponseEntity.ok(response);
     }
 
@@ -52,19 +56,19 @@ public class AdminApiController {
             @ApiResponse( responseCode = "200", description="Successful response.",
                     content={
                             @Content(
-                                    mediaType = "application/vnd.api.v1+json",
-                                    schema = @Schema(implementation = UserModel.class)
+                                    mediaType = MEDIATYPE_V1,
+                                    schema = @Schema(implementation = UserDataModel.class)
                             )
                     }
             ),
             @ApiResponse(responseCode = "400", description="Not found."),
             @ApiResponse(responseCode = "500", description="Internal server error.")
     })
-    @GetMapping(value="/users/{id}", produces = "application/vnd.api.v1+json")
+    @GetMapping(value="/users/{id}", produces = MEDIATYPE_V1)
     public @ResponseBody
-    ResponseEntity<UserModel> getUser(@PathVariable @NotEmpty String id){
+    ResponseEntity<UserDataModel> getUser(@PathVariable @NotEmpty @Pattern(regexp = VALIDATOR_ISER_ID) String id){
         LOG.info("getUser with id {}", id);
-        UserModel response = usersAdminService.getUser(id);
+        UserDataModel response = usersAdminService.getUser(id);
         return ResponseEntity.ok(response);
     }
 
@@ -73,19 +77,19 @@ public class AdminApiController {
             @ApiResponse( responseCode = "200", description="Successful response.",
                     content={
                             @Content(
-                                    mediaType = "application/vnd.api.v1+json",
-                                    schema = @Schema(implementation = UserModel.class)
+                                    mediaType = MEDIATYPE_V1,
+                                    schema = @Schema(implementation = UserDataModel.class)
                             )
                     }
             ),
             @ApiResponse(responseCode = "400", description="Not found."),
             @ApiResponse(responseCode = "500", description="Internal server error.")
     })
-    @DeleteMapping(value="/users/{id}", produces = "application/vnd.api.v1+json")
+    @DeleteMapping(value="/users/{id}", produces = MEDIATYPE_V1)
     public @ResponseStatus
-    ResponseEntity<String> deleteUser(@PathVariable @NotEmpty String id){
+    ResponseEntity<UserIdResponseModel> deleteUser(@PathVariable @NotEmpty @Pattern(regexp = VALIDATOR_ISER_ID) String id){
         usersAdminService.deleteUser(id);
-        return ResponseEntity.ok("");
+        return ResponseEntity.accepted().body(new UserIdResponseModel(id));
     }
 
 }
