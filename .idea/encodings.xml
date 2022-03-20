@@ -9,5 +9,6 @@
     <file url="file://$PROJECT_DIR$/feature/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rest-admin-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rest-user-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-repo/src/main/java" charset="UTF-8" />
   </component>
 </project>

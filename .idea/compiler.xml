@@ -8,16 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="feature-multiplayer" />
+        <module name="feature-customer-support" />
+        <module name="rest-admin-service" />
+        <module name="feature-ads" />
+        <module name="rest-user-service" />
+        <module name="user-repo" />
         <module name="ads" />
         <module name="customer-support" />
         <module name="admin-rest-api-service" />
         <module name="feature" />
         <module name="common" />
         <module name="user-rest-api" />
-        <module name="feature-customer-support" />
-        <module name="rest-admin-service" />
-        <module name="feature-ads" />
-        <module name="rest-user-service" />
         <module name="multiplayer" />
       </profile>
     </annotationProcessing>
@@ -35,6 +36,7 @@
       <module name="multiplayer" options="-parameters" />
       <module name="rest-admin-service" options="-parameters" />
       <module name="rest-user-service" options="-parameters" />
+      <module name="user-repo" options="-parameters" />
       <module name="user-rest-api" options="-parameters" />
     </option>
   </component>
