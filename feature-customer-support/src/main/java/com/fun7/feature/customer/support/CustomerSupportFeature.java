@@ -2,11 +2,13 @@ package com.fun7.feature.customer.support;
 
 import com.fun7.feature.impl.FeatureUtils;
 import org.joda.time.DateTime;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+@Component
 public class CustomerSupportFeature extends FeatureUtils {
 
     public static final String SUPPORT_ZONE = "Europe/Ljubljana";
@@ -80,5 +82,4 @@ public class CustomerSupportFeature extends FeatureUtils {
     public boolean isFloatingHoliday(Date date){
         return false;
     }
-
 }
