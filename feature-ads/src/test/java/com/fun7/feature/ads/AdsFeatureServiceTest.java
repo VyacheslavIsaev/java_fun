@@ -1,5 +1,7 @@
 package com.fun7.feature.ads;
 
+import com.fun7.feature.ads.config.AdsFeatureConfig;
+import com.fun7.feature.ads.config.AdsFeatureConfigData;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import org.junit.jupiter.api.*;
@@ -17,19 +19,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(
         classes={
-                com.fun7.feature.ads.config.FeatureAdsConfigData.class,
-                com.fun7.feature.ads.config.FeatureAdsConfig.class,
-                com.fun7.feature.ads.FeatureAds.class
+                AdsFeatureConfigData.class,
+                AdsFeatureConfig.class,
+                AdsFeature.class
         })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @ActiveProfiles("test")
-public class FeatureAdsServiceTest {
+public class AdsFeatureServiceTest {
 
     @Autowired
     private RestTemplate restTemplate;
 
     @Autowired
-    private FeatureAds featureAds;
+    private AdsFeature adsFeature;
 
     private WireMockServer wireMockServer;
 
@@ -134,12 +136,12 @@ public class FeatureAdsServiceTest {
 
     @Test
     public void disabled_if_not_enabled_region_is_passed() throws Exception {
-        assertFalse( featureAds.enabled("si", "si", "si") );
+        assertFalse( adsFeature.enabled("si", "si", "si") );
     }
 
     @Test
     public void enabled_if_correct_region_is_passed() throws Exception {
-        assertTrue( featureAds.enabled(ENABLED_REGION_STR,ENABLED_REGION_STR,ENABLED_REGION_STR) );
+        assertTrue( adsFeature.enabled(ENABLED_REGION_STR,ENABLED_REGION_STR,ENABLED_REGION_STR) );
     }
 
     @Test

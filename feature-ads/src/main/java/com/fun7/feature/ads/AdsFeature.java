@@ -1,7 +1,6 @@
 package com.fun7.feature.ads;
 
-import com.fun7.feature.ads.config.FeatureAdsConfig;
-import com.fun7.feature.ads.config.FeatureAdsConfigData;
+import com.fun7.feature.ads.config.AdsFeatureConfigData;
 import com.fun7.feature.ads.model.ExternalAdsResponseModel;
 import com.fun7.feature.impl.FeatureUtils;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class FeatureAds extends FeatureUtils {
+public class AdsFeature extends FeatureUtils {
 
     private final RestTemplate restTemplate;
 
@@ -19,7 +18,7 @@ public class FeatureAds extends FeatureUtils {
     private final String userPass;
     private final String adsEnabledStr;
 
-    public FeatureAds(RestTemplate restTemplate, FeatureAdsConfigData configData) {
+    public AdsFeature(RestTemplate restTemplate, AdsFeatureConfigData configData) {
         this.restTemplate = restTemplate;
         requestUrl = configData.getRequestUrl();
         userName = configData.getUserName();

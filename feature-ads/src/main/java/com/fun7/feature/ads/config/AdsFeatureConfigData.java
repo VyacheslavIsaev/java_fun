@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-public class FeatureAdsConfigData {
+public class AdsFeatureConfigData {
     @Value("${feature-ads-service.root-uri}")
     private String rootUri;
 

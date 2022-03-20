@@ -1,8 +1,6 @@
 package com.fun7.feature.ads.config;
 
 import io.github.resilience4j.common.circuitbreaker.configuration.CircuitBreakerConfigCustomizer;
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,11 +11,11 @@ import java.time.Duration;
 import static io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.SlidingWindowType.COUNT_BASED;
 
 @Configuration
-public class FeatureAdsConfig {
+public class AdsFeatureConfig {
 
-    FeatureAdsConfigData configData;
+    AdsFeatureConfigData configData;
 
-    public FeatureAdsConfig(FeatureAdsConfigData configData) {
+    public AdsFeatureConfig(AdsFeatureConfigData configData) {
         this.configData = configData;
     }
 

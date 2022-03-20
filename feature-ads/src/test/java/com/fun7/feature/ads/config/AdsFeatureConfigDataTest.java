@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @SpringBootTest(
         classes={
-                com.fun7.feature.ads.config.FeatureAdsConfigData.class
+                AdsFeatureConfigData.class
         })
 @WebAppConfiguration
-public class FeatureAdsConfigDataTest {
+public class AdsFeatureConfigDataTest {
 
     @Autowired
-    FeatureAdsConfigData data;
+    AdsFeatureConfigData data;
 
     @Test
     public void context(){
@@ -26,7 +26,7 @@ public class FeatureAdsConfigDataTest {
 
     @Test
     public void data_matches(){
-        assertNotNull( data.getRootUri());
+        assertNotNull(data.getRootUri());
         assertNotNull(data.getRequestUrl() );
         assertNotNull(data.getUserName() );
         assertNotNull(data.getUserPass() );
