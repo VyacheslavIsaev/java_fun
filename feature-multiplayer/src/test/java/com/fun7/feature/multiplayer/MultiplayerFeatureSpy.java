@@ -1,10 +1,10 @@
 package com.fun7.feature.multiplayer;
 
-import com.fun7.user.repo.UsersRepo;
+import com.fun7.user.repo.Repo;
 
 public class MultiplayerFeatureSpy extends MultiplayerFeature{
 
-    public MultiplayerFeatureSpy(UsersRepo usersRepo) {
+    public MultiplayerFeatureSpy(Repo usersRepo) {
         super(usersRepo);
     }
 
