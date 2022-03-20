@@ -1,3 +1,10 @@
+ads-feature:
+  root-uri: http://localhost:9090
+  request-url: /fun7-ad-partner?countryCode={cc}
+  user-name: fun7user
+  user-pass: fun7pass
+  enabled-str: "sure, why not!"
+
 springdoc:
   api-docs:
     path: /api-docs

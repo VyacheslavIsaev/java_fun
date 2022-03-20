@@ -16,9 +16,20 @@ public class UserServiceImpl implements UserService {
 
     private MultiplayerFeature multiplayerFeature;
 
+    public UserServiceImpl(AdsFeature ads) {
+        this.ads = ads;
+    }
+
     @Override
     public UserFeaturesResponseModel getFeatures(String userId, String cc, String timezone) {
-        return new UserFeaturesResponseModel();
+        String adsStatus = ads.is_enabled_str(userId, cc, timezone);
+        String csStatus = customerSupport.is_enabled_str(userId, cc, timezone);
+        String mutiplayerStatus = multiplayerFeature.is_enabled_str(userId, cc, timezone);
+        return new UserFeaturesResponseModel().builder()
+                .multiplayer(mutiplayerStatus)
+                .user_support(csStatus)
+                .ads(adsStatus)
+                .build();
     }
 
 }
