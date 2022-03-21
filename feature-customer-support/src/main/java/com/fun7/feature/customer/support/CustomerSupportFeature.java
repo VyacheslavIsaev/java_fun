@@ -2,6 +2,9 @@ package com.fun7.feature.customer.support;
 
 import com.fun7.feature.impl.FeatureUtils;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -11,6 +14,7 @@ import java.util.*;
 @Component
 public class CustomerSupportFeature extends FeatureUtils {
 
+    // TODO: Move configuration to yml file.
     public static final String SUPPORT_ZONE = "Europe/Ljubljana";
     public static final String SUPPORT_OPEN_TIME  = "09:00";
     public static final String SUPPORT_CLOSE_TIME = "15:00";
@@ -40,16 +44,10 @@ public class CustomerSupportFeature extends FeatureUtils {
 
     @Override
     public boolean enabled(String userId, String cc, String timezone) {
+        LocalDateTime currentDate = LocalDateTime.now(DateTimeZone.forID(SUPPORT_ZONE));
+        Date date = currentDate.toDate();
 
-        Date date = new Date();
-
-        TimeZone tz = TimeZone.getTimeZone(SUPPORT_ZONE);
-        Calendar calendar = Calendar.getInstance(tz);
-
-        DateTime dt = new DateTime();
-        int iDoW = dt.getDayOfWeek();
-
-        return false;
+        return !isHoliday(date) && onAvailableWeekDay(currentDate.getDayOfWeek()) && inTime(date);
     }
 
     public boolean inTime(Date date){
