@@ -1,7 +1,7 @@
 package com.fun7.rest.admin.api;
 
 import com.fun7.rest.admin.models.UserIdResponseModel;
-import com.fun7.user.repo.UsersAdminService;
+import com.fun7.user.repo.AdminUserInterface;
 import com.fun7.user.repo.models.UserDataModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -25,9 +25,9 @@ public class RestAdminApiController {
     private static final String MEDIATYPE_V1 = "application/vnd.api.v1+json";
     private static final String VALIDATOR_ISER_ID = "[\\w\\d]*";
 
-    private UsersAdminService usersAdminService;
+    private AdminUserInterface usersAdminService;
 
-    public RestAdminApiController(UsersAdminService usersAdminService) {
+    public RestAdminApiController(AdminUserInterface usersAdminService) {
         this.usersAdminService = usersAdminService;
     }
 
