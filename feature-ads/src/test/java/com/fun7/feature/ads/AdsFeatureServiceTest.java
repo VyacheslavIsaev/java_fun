@@ -141,21 +141,13 @@ public class AdsFeatureServiceTest {
 
     @Test
     public void enabled_if_correct_region_is_passed() throws Exception {
-        assertTrue( adsFeature.enabled(ENABLED_REGION_STR,ENABLED_REGION_STR,ENABLED_REGION_STR) );
+        assertTrue( adsFeature.enabled(ENABLED_REGION_STR, ENABLED_REGION_STR, ENABLED_REGION_STR) );
     }
 
     @Test
     public void testFoo() throws Exception {
-//        EXTERNAL_SERVICE.wsxxxubFor(get("/external-foo").willReturn(serverError()));
-//
-//        for (int i = 0; i < 5; i++) {
-//            ResponseEntity<String> response = restTemplate.getForEntity("/foo", String.class);
-//            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        for (int i = 0; i < 5; i++) {
-//            ResponseEntity<String> response = restTemplate.getForEntity("/foo", String.class);
-//            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
-//        }
+        wireMockServer.stop();
+        assertFalse( adsFeature.enabled("si", "si", "si") );
     }
 
 }

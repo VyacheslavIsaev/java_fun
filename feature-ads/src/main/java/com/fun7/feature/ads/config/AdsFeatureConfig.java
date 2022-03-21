@@ -13,6 +13,8 @@ import static io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.Sliding
 @Configuration
 public class AdsFeatureConfig {
 
+    public static final String RESILIENCE4J_CB_INSTANCE_NAME = "externalApiCB";
+
     AdsFeatureConfigData configData;
 
     public AdsFeatureConfig(AdsFeatureConfigData configData) {
@@ -24,14 +26,14 @@ public class AdsFeatureConfig {
         return new RestTemplateBuilder().rootUri(configData.getRootUri()).build();
     }
 
-    @Bean
-    public CircuitBreakerConfigCustomizer externalServiceFooCircuitBreakerConfig() {
-        return CircuitBreakerConfigCustomizer
-                .of("externalServiceFoo",
-                        builder -> builder.slidingWindowSize(10)
-                                .slidingWindowType(COUNT_BASED)
-                                .waitDurationInOpenState(Duration.ofSeconds(5))
-                                .minimumNumberOfCalls(5)
-                                .failureRateThreshold(50.0f));
-    }
+//    @Bean
+//    public CircuitBreakerConfigCustomizer externalServiceFooCircuitBreakerConfig() {
+//        return CircuitBreakerConfigCustomizer
+//                .of(RESILIENCE4J_CB_INSTANCE_NAME,
+//                        builder -> builder.slidingWindowSize(10)
+//                                .slidingWindowType(COUNT_BASED)
+//                                .waitDurationInOpenState(Duration.ofSeconds(5))
+//                                .minimumNumberOfCalls(5)
+//                                .failureRateThreshold(50.0f));
+//    }
 }

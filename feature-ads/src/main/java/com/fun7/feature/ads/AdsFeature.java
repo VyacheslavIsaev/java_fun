@@ -4,11 +4,14 @@ import com.fun7.feature.ads.config.AdsFeatureConfigData;
 import com.fun7.feature.ads.model.ExternalAdsResponseModel;
 import com.fun7.feature.impl.FeatureUtils;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.http.*;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+import static com.fun7.feature.ads.config.AdsFeatureConfig.RESILIENCE4J_CB_INSTANCE_NAME;
+
+@Service
 public class AdsFeature extends FeatureUtils {
 
     private final RestTemplate restTemplate;
@@ -26,7 +29,8 @@ public class AdsFeature extends FeatureUtils {
         adsEnabledStr = configData.getEnabledStr();
     }
 
-    @CircuitBreaker(name = "externalApiCB")
+    @Retry(name = "externalApiRetry")
+    @CircuitBreaker(name = RESILIENCE4J_CB_INSTANCE_NAME)
     public String callExternalApi(String cc){
         HttpEntity request = getRequestBasicAuthentication();
 
@@ -46,6 +50,12 @@ public class AdsFeature extends FeatureUtils {
 
     @Override
     public boolean enabled(String userId, String cc, String timezone) {
-        return callExternalApi(cc).equals(adsEnabledStr);
+        // Feature: Implement time-based expiring caching
+        // result shall depend on the exception type.
+        try {
+            return callExternalApi(cc).equals(adsEnabledStr);
+        }catch(Exception e){
+            return false;
+        }
     }
 }
