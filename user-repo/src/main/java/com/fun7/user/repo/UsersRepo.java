@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Repository
-public class Repo implements AdminUserInterface, UserInterface {
+public class UsersRepo implements AdminUserInterface, UserInterface {
 
     private HashMap<String, UserDataModel> userExperience = new HashMap<String, UserDataModel>();
 

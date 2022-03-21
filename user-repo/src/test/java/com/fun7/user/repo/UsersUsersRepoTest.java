@@ -10,9 +10,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UsersRepoTest {
+public class UsersUsersRepoTest {
 
-    Repo usersRepo = new Repo();
+    UsersRepo usersRepo = new UsersRepo();
 
     @Test
     void user_appears_after_first_call(){
