@@ -1,17 +1,17 @@
 package com.fun7.feature.multiplayer;
 
-import com.fun7.user.repo.Repo;
+import com.fun7.user.repo.UsersRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = {Repo.class})
+@SpringBootTest(classes = {UsersRepo.class})
 public class MultiplayerFeatureTest {
 
     @Autowired
-    private Repo usersRepo;
+    private UsersRepo usersRepo;
 
     private final MultiplayerFeatureSpy multiplayerFeature = new MultiplayerFeatureSpy(usersRepo);
 
