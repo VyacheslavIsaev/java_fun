@@ -8,6 +8,7 @@ public class UserRestApiTest {
 
     @Test
     public void contextLoads() {
+
     }
 
 }

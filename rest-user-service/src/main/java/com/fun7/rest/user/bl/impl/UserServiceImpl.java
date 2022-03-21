@@ -16,8 +16,12 @@ public class UserServiceImpl implements UserService {
 
     private MultiplayerFeature multiplayerFeature;
 
-    public UserServiceImpl(AdsFeature ads) {
+    public UserServiceImpl(AdsFeature ads,
+                           CustomerSupportFeature customerSupport,
+                           MultiplayerFeature multiplayerFeature) {
         this.ads = ads;
+        this.customerSupport = customerSupport;
+        this.multiplayerFeature = multiplayerFeature;
     }
 
     @Override

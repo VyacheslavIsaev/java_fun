@@ -16,12 +16,18 @@
         <module name="ads" />
         <module name="customer-support" />
         <module name="admin-rest-api-service" />
-        <module name="feature" />
         <module name="common" />
+        <module name="feature" />
         <module name="user-rest-api" />
         <module name="multiplayer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="feature-ads" target="11" />
+      <module name="feature-customer-support" target="11" />
+      <module name="rest-admin-service" target="11" />
+      <module name="rest-user-service" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

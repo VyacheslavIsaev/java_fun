@@ -1,6 +1,6 @@
 package com.fun7.rest.user.api;
 
-import com.fun7.user.repo.Repo;
+import com.fun7.user.repo.UsersRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Import(Repo.class)
+@Import(UsersRepo.class)
 @WebMvcTest
 public class UserApiControllerTest {
 
@@ -28,7 +28,7 @@ public class UserApiControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private Repo usersRepo;
+    private UsersRepo usersRepo;
 
     private String encodeValue(String value){
         try {
